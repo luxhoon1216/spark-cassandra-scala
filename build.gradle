@@ -17,7 +17,7 @@ jar {
 
 dependencies{
     compile 'org.slf4j:slf4j-api:1.7.5'
-    compile "org.scala-lang:scala-library:2.11.7"
+    compile "org.scala-lang:scala-library:2.10.6"
 
     compile 'com.datastax.spark:spark-cassandra-connector_2.10:1.5.0'
     compile 'org.apache.spark:spark-core_2.10:1.6.0'

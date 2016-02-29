@@ -10,11 +10,13 @@ object ScalaDemo {
     val sc = new SparkContext(args(0), "Spark Cassandra Scala", conf)
  
     val rdd = sc.cassandraTable("test", "kv")
-    println("count=" + rdd.count)
-    println(rdd.first)
-    println(rdd.map(_.getInt("value")).sum)
+    if(!rdd.isEmpty()) {
+      println("count=" + rdd.count)
+      println(rdd.first)
+      println(rdd.map(_.getInt("value")).sum)  
+    }
     
     val collection = sc.parallelize(Seq(("key3", 3), ("key4", 4)))
-    collection.writerBuilder("test", "kv", SomeColumns("key", "value")).saveToCassandra();  
+    collection.saveToCassandra("test", "kv", SomeColumns("key", "value"))  
   }
 }
